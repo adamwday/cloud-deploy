@@ -11,14 +11,16 @@ resource "aws_instance" "example" {
   instance_type = "t2.micro"
   key_name = "${aws_key_pair.mykey.key_name}"
 
+# Uploads this script to /tmp/
   provisioner "file" {
     source = "script.sh"
     destination = "/tmp/script.sh"
   }
+# Executes the script
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/script.sh",
-      "sudo /tmp/script.sh"
+      "sudo bash /tmp/script.sh"
     ]
   }
   connection {

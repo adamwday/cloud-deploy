@@ -1,6 +1,6 @@
 *.tfvars
 *.terraform
-*tfstate*
+*.tfstate.*
 *.pem
 *.pub
 *.ppk
