@@ -7,4 +7,3 @@
 mykey*
 *.pwd*
 terraform.tfstate
-/PuTTy
