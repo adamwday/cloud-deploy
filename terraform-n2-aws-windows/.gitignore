@@ -1,0 +1,9 @@
+*.tfvars
+*.terraform
+*.tfstate.*
+*.pem
+*.pub
+*.ppk
+mykey*
+*.pwd*
+terraform.tfstate
