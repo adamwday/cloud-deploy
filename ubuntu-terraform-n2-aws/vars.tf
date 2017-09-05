@@ -15,10 +15,10 @@ variable "AWS_REGION" {
   }
 
 variable "PATH_TO_PRIVATE_KEY" {
-  default = "mykey"
+  default = "mykeyubu"
 }
 variable "PATH_TO_PUBLIC_KEY" {
-  default = "mykey.pub"
+  default = "mykeyubu.pub"
 }
 variable "INSTANCE_USERNAME" {
   default = "ubuntu"

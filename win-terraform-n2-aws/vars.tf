@@ -11,10 +11,10 @@ variable "WIN_AMIS" {
 }
 
 variable "PATH_TO_PRIVATE_KEY" {
-  default = "mykeyw"
+  default = "mykeywin"
 }
 variable "PATH_TO_PUBLIC_KEY" {
-  default = "mykeyw.pub"
+  default = "mykeywin.pub"
 }
 variable "INSTANCE_USERNAME" {
   default = "Terraform"

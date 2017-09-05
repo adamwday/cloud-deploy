@@ -1,12 +1,12 @@
-resource "aws_key_pair" "mykeyw" {
-  key_name = "mykeyw"
+resource "aws_key_pair" "mykeywin" {
+  key_name = "mykeywin"
   public_key = "${file("${var.PATH_TO_PUBLIC_KEY}")}"
 }
 
 resource "aws_instance" "win-example" {
   ami = "${lookup(var.WIN_AMIS, var.AWS_REGION)}"
   instance_type = "t2.micro"
-  key_name = "${aws_key_pair.mykeyw.key_name}"
+  key_name = "${aws_key_pair.mykeywin.key_name}"
   user_data = <<EOF
 <powershell>
 net user ${var.INSTANCE_USERNAME} ${var.INSTANCE_PASSWORD} /add
