@@ -1,5 +1,5 @@
 module "consul" {
-  source = "github.com/wardviaene/terraform-consul-module.git"
+  source = "https://github.com/adamwday/consul-terraform-module.git"
   key_name = "${aws_key_pair.mykeyubu.key_name}"
   key_path = "${var.PATH_TO_PRIVATE_KEY}"
   region = "${var.AWS_REGION}"
