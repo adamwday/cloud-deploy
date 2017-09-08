@@ -28,7 +28,7 @@ Looking up the instance id, region, subnet, and security group.
 */
 
 resource "aws_instance" "example" {
-  count = "3"
+  count = "4"
   ami = "${lookup(var.AMIS, var.AWS_REGION)}"
   instance_type = "t2.micro"
   subnet_id = "${aws_subnet.main-public-1.id}"

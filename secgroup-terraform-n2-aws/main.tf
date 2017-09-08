@@ -18,7 +18,7 @@ Creates security group & adds rules.
   resource "aws_security_group" "allow_ssh" {
   name = "allow_all"
   description = "Allow inbound SSH traffic from my IP"
-  vpc_id = "vpc-61301008"
+  vpc_id = "vpc-693f1f00"
 
   ingress {
   from_port = 22
