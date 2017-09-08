@@ -26,11 +26,17 @@ Looking up the instance id, region, subnet, and security group.
 ***************************************************************
 */
 resource "aws_instance" "example" {
+  count = "3"
   ami = "${lookup(var.AMIS, var.AWS_REGION)}"
   instance_type = "t2.micro"
-  subnet_id = "$(aws_subnet.main-public-1.id}"
-  vpc_security_group_ids = ["$aws_security_group.sg-e32a8f8b.id}"]
+  subnet_id = "${aws_subnet.main-public-1.id}"
   key_name = "${aws_key_pair.mykeyubu.key_name}"
+
+  lifecycle {
+      create_before_destroy = "true"
+      prevent_destroy = "false"
+#    [ignore_changes = [ATTRIBUTE NAME, ...]]
+  }
 
 /*
 **************************************
