@@ -1,6 +1,6 @@
 /*
 ***************************************************************************
-The instance is file used to:
+This file used to:
 1. Change the AMI id into a lookup into a map
    variable which is stored in the vars.tf file.
 2. Lookup the VPC subnets and security groups so that we can deploy into
@@ -11,9 +11,9 @@ The instance is file used to:
 */
 
 /*
-**************************************
-The key pair to use for this instance.
-**************************************
+*****************************************************
+Lookup the public key and key name for this instance.
+*****************************************************
 */
 
 resource "aws_key_pair" "mykeyubu" {
@@ -23,7 +23,8 @@ resource "aws_key_pair" "mykeyubu" {
 
 /*
 ***************************************************************
-Looking up the instance id, region, subnet, and security group.
+Getting instance name, number of hosts, AMI-id, region, instance type,
+subnet, and private key name.
 ***************************************************************
 */
 
@@ -72,9 +73,9 @@ Executes the script.
   }
 
 /*
-***********************************************
-Instance username and private key are resolved.
-***********************************************
+*******************************************************************
+How we establish a connection to the vm's for dropping local files.
+*******************************************************************
 */
 
   connection {
