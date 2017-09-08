@@ -1,4 +1,9 @@
-# Internet VPC
+/*
+********************************************************
+Defines the virtual private network space (VPC) for AWS.
+********************************************************
+*/
+
 resource "aws_vpc" "main" {
     cidr_block = "10.0.0.0/16"
     instance_tenancy = "default"
@@ -10,6 +15,11 @@ resource "aws_vpc" "main" {
     }
 }
 
+/*
+*******************************
+Defined subnets within the VPC.
+*******************************
+*/
 
 # Subnets
 resource "aws_subnet" "main-public-1" {
@@ -73,6 +83,12 @@ resource "aws_subnet" "main-private-3" {
     }
 }
 
+/*
+*************************************
+Defines the internet gateway for AWS.
+*************************************
+*/
+
 # Internet GW
 resource "aws_internet_gateway" "main-gw" {
     vpc_id = "${aws_vpc.main.id}"
@@ -81,6 +97,12 @@ resource "aws_internet_gateway" "main-gw" {
         Name = "main"
     }
 }
+
+/*
+*****************************************************
+Defines routing tables the aforementioned VPC in AWS.
+*****************************************************
+*/
 
 # route tables
 resource "aws_route_table" "main-public" {

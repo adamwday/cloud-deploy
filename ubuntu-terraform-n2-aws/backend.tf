@@ -1,4 +1,8 @@
-# Stores the Terraform state file into S3.
+/*
+****************************************
+Stores the Terraform state file into S3.
+****************************************
+*/
 
 terraform {
   backend "s3" {

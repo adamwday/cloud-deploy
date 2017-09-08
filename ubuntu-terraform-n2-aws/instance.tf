@@ -15,6 +15,7 @@ The instance is file used to:
 The key pair to use for this instance.
 **************************************
 */
+
 resource "aws_key_pair" "mykeyubu" {
   key_name = "mykeyubu"
   public_key = "${file("${var.PATH_TO_PUBLIC_KEY}")}"
@@ -25,12 +26,20 @@ resource "aws_key_pair" "mykeyubu" {
 Looking up the instance id, region, subnet, and security group.
 ***************************************************************
 */
+
 resource "aws_instance" "example" {
   count = "3"
   ami = "${lookup(var.AMIS, var.AWS_REGION)}"
   instance_type = "t2.micro"
   subnet_id = "${aws_subnet.main-public-1.id}"
   key_name = "${aws_key_pair.mykeyubu.key_name}"
+
+/*
+******************************************************************************
+Adds constraints around blindly destroying machines until the new vm's are up.
+Adds protection from accidental deletion if desired.
+******************************************************************************
+*/
 
   lifecycle {
       create_before_destroy = "true"
@@ -43,26 +52,31 @@ resource "aws_instance" "example" {
 Uploads this script to /tmp/.
 **************************************
 */
+
   provisioner "file" {
     source = "script.sh"
     destination = "/tmp/script.sh"
   }
+
 /*
 ********************
 Executes the script.
 ********************
 */
+
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/script.sh",
       "sudo bash /tmp/script.sh"
     ]
   }
+
 /*
 ***********************************************
 Instance username and private key are resolved.
 ***********************************************
 */
+
   connection {
     user = "${var.INSTANCE_USERNAME}"
     private_key = "${file("${var.PATH_TO_PRIVATE_KEY}")}"

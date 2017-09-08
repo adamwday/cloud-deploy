@@ -1,7 +1,13 @@
-# nat gw
+/*
+*********************************
+Specifies the NAT Gateway in AWS.
+*********************************
+*/
+
 resource "aws_eip" "nat" {
   vpc      = true
 }
+
 resource "aws_nat_gateway" "nat-gw" {
   allocation_id = "${aws_eip.nat.id}"
   subnet_id = "${aws_subnet.main-public-1.id}"
