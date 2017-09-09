@@ -22,10 +22,10 @@ resource "aws_key_pair" "mykeyubu" {
 }
 
 /*
-***************************************************************
+**********************************************************************
 Getting instance name, number of hosts, AMI-id, region, instance type,
 subnet, and private key name.
-***************************************************************
+**********************************************************************
 */
 
 resource "aws_instance" "example" {
@@ -46,40 +46,5 @@ Adds protection from accidental deletion if desired.
       create_before_destroy = "true"
       prevent_destroy = "false"
 #    [ignore_changes = [ATTRIBUTE NAME, ...]]
-  }
-
-/*
-**************************************
-Uploads this script to /tmp/.
-**************************************
-*/
-
-  provisioner "file" {
-    source = "script.sh"
-    destination = "/tmp/script.sh"
-  }
-
-/*
-********************
-Executes the script.
-********************
-*/
-
-  provisioner "remote-exec" {
-    inline = [
-      "chmod +x /tmp/script.sh",
-      "sudo bash /tmp/script.sh"
-    ]
-  }
-
-/*
-*******************************************************************
-How we establish a connection to the vm's for dropping local files.
-*******************************************************************
-*/
-
-  connection {
-    user = "${var.INSTANCE_USERNAME}"
-    private_key = "${file("${var.PATH_TO_PRIVATE_KEY}")}"
   }
 }
