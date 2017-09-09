@@ -24,16 +24,33 @@ resource "aws_key_pair" "mykeyubu" {
 /*
 **********************************************************************
 Getting instance name, number of hosts, AMI-id, region, instance type,
-subnet, and private key name.
+VPC subnet, public key name, and user data for our persistent storage.
 **********************************************************************
 */
 
 resource "aws_instance" "example" {
-  count = "4"
+  count = "1"
   ami = "${lookup(var.AMIS, var.AWS_REGION)}"
   instance_type = "t2.micro"
   subnet_id = "${aws_subnet.main-public-1.id}"
   key_name = "${aws_key_pair.mykeyubu.key_name}"
+}
+
+/*
+*************************************************************
+Creates a new EBS volume and attaches it to the EC2 instance.
+*************************************************************
+*/
+resource "aws_volume_attachment" "ebs_att" {
+  device_name = "/dev/sdh"
+  volume_id   = "${aws_ebs_volume.example.id}"
+  instance_id = "${aws_instance.example.id}"
+}
+
+resource "aws_ebs_volume" "example" {
+  availability_zone = "us-east-2a"
+  size              = 10
+}
 
 /*
 ******************************************************************************
@@ -42,9 +59,7 @@ Adds protection from accidental deletion if desired.
 ******************************************************************************
 */
 
-  lifecycle {
-      create_before_destroy = "true"
-      prevent_destroy = "false"
-#    [ignore_changes = [ATTRIBUTE NAME, ...]]
-  }
-}
+#  lifecycle {
+#      create_before_destroy = true
+#      prevent_destroy = false
+#  }
