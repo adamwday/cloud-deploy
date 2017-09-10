@@ -1,3 +1,9 @@
+/*
+******************************************************************
+Passes instance device name and Jenkins version to jenkins-init.sh
+so that Jenkins can be insalled after the vm is ready.
+******************************************************************
+*/
 data "template_file" "jenkins-init" {
   template = "${file("scripts/jenkins-init.sh")}"
   vars {
