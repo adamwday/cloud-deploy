@@ -1,4 +1,3 @@
-#
 module "consul" {
   source = "https://github.com/adamwday/consul-terraform-module.git"
   key_name = "${aws_key_pair.mykeyubu.key_name}"
