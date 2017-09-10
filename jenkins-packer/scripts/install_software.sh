@@ -10,7 +10,6 @@ chown -R node-demo:node-demo /app
 
 echo 'user www-data;
 worker_processes auto;
-
 pid /run/nginx.pid;
 
 events {

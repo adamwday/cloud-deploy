@@ -21,6 +21,7 @@
     "source": "app",
     "destination": "/tmp/app"
   },
+
   {
     "type": "shell",
     "scripts": [  "scripts/deploy.sh"   ],
