@@ -23,17 +23,19 @@ resource "aws_key_pair" "mykeyubu" {
 
 /*
 **********************************************************************
-Getting instance name, number of hosts, AMI-id, region, instance type,
+Describe resource, number of hosts, AMI-id, region, instance type,
 VPC subnet, public key name, and user data for our persistent storage.
 **********************************************************************
 */
 
-resource "aws_instance" "example" {
+resource "aws_instance" "jenkins" {
   count = "1"
   ami = "${lookup(var.AMIS, var.AWS_REGION)}"
   instance_type = "t2.micro"
   subnet_id = "${aws_subnet.main-public-1.id}"
+  vpc_security_group_ids = ["${aws_security_group.jenkins-securitygroup.id}"]
   key_name = "${aws_key_pair.mykeyubu.key_name}"
+  user_data = "${data.template_cloudinit_config.cloudinit-jenkins.rendered}"
 }
 
 /*
@@ -41,15 +43,37 @@ resource "aws_instance" "example" {
 Creates a new EBS volume and attaches it to the EC2 instance.
 *************************************************************
 */
-resource "aws_volume_attachment" "ebs_att" {
-  device_name = "/dev/sdh"
-  volume_id   = "${aws_ebs_volume.example.id}"
-  instance_id = "${aws_instance.example.id}"
+
+resource "aws_ebs_volume" "jenkins-data" {
+  availability_zone = "us-east-2a"
+  size  = 15
+  type = "gp2"
+  tags {
+    Name = "jenkins-data"
+  }
 }
 
-resource "aws_ebs_volume" "example" {
-  availability_zone = "us-east-2a"
-  size              = 10
+resource "aws_volume_attachment" "jenkins-data-att" {
+  device_name = "${var.INSTANCE_DEVICE_NAME}"
+  volume_id   = "${aws_ebs_volume.jenkins-data.id}"
+  instance_id = "${aws_instance.jenkins.id}"
+}
+
+/*
+**********************************************************************
+RESOURCE #2
+Describe resource, number of hosts, AMI-id, region, instance type,
+VPC subnet, public key name, and user data for our persistent storage.
+**********************************************************************
+*/
+
+resource "aws_instance" "app1" {
+  count = "${var.APP_INSTANCE_COUNT}"
+  ami = "${lookup(var.AMIS, var.AWS_REGION)}"
+  instance_type = "t2.micro"
+  subnet_id = "${aws_subnet.main-public-1.id}"
+  vpc_security_group_ids = ["${aws_security_group.app1-securitygroup.id}"]
+  key_name = "${aws_key_pair.mykeyubu.key_name}"
 }
 
 /*
