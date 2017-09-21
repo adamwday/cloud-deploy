@@ -26,9 +26,9 @@ tags {
   }
 }
 
-resource "aws_security_group" "app1-securitygroup" {
+resource "aws_security_group" "k8s-securitygroup" {
   vpc_id = "${aws_vpc.main.id}"
-  name = "app1-securitygroup"
+  name = "k8s-securitygroup"
   description = "security group that allows ssh and all egress traffic"
   egress {
       from_port = 0
@@ -50,7 +50,7 @@ resource "aws_security_group" "app1-securitygroup" {
       cidr_blocks = ["0.0.0.0/0"]
   }
  tags {
-    Name = "app1-securitygroup"
+    Name = "k8s-securitygroup"
    }
   }
 
