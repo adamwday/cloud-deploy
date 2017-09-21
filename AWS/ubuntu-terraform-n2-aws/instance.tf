@@ -67,12 +67,12 @@ VPC subnet, public key name, and user data for our persistent storage.
 **********************************************************************
 */
 
-resource "aws_instance" "app1" {
+resource "aws_instance" "k8s" {
   count = "${var.APP_INSTANCE_COUNT}"
   ami = "${lookup(var.AMIS, var.AWS_REGION)}"
   instance_type = "t2.micro"
   subnet_id = "${aws_subnet.main-public-1.id}"
-  vpc_security_group_ids = ["${aws_security_group.app1-securitygroup.id}"]
+  vpc_security_group_ids = ["${aws_security_group.k8s-securitygroup.id}"]
   key_name = "${aws_key_pair.mykeyubu.key_name}"
 }
 
