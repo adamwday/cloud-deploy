@@ -9,6 +9,6 @@ output "your jenkins public ip" {
   value = "${aws_instance.jenkins.public_ip}"
 }
 
-output "your app1 public ip" {
-  value = "${aws_instance.app1.public_ip}"
+output "your k8s public ip" {
+  value = "${aws_instance.k8s.public_ip}"
 }
