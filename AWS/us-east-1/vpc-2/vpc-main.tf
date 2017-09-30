@@ -5,7 +5,7 @@ provider "aws" {
 }
 
 module "vpc_network" {
-  source = "github.com/rancher/terraform-modules/blob/master/modules/aws/network/networks/full-vpc"
+  source = ".../.../rancher/terraform-modules/tree/master/modules/aws/network/networks/full-vpc"
 
   vpc_name             = "${var.aws_env_name}"
   vpc_cidr             = "${var.aws_vpc_cidr}"
