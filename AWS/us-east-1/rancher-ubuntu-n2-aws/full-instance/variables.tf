@@ -1,6 +1,11 @@
 #------------------------------------------#
 # AWS Environment Variables
 #------------------------------------------#
+variable "AWS_ACCESS_KEY" {}
+variable "AWS_SECRET_KEY" {}
+variable "AWS_REGION" {
+  default = "us-east-1"
+}
 variable "region" {
     default     = "us-east-1"
     description = "The region of AWS, for AMI lookups"

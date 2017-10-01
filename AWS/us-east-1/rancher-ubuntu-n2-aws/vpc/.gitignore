@@ -1,0 +1,12 @@
+#
+*.tfvars
+*.terraform
+*.tfstate.*
+*.pem
+*.pub
+*.ppk
+*key*
+terraform.tfstate
+*.swp
+*.tar.gz
+README.md
