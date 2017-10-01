@@ -3,6 +3,8 @@
 ## Introduction
 
 This repository is to show examples of deploying basic web or app servers to AWS
+using Ubuntu or Windows. Also trying to play with microservices here as well like
+Consul.
 
 ## Purpose
 
