@@ -5,7 +5,5 @@
 *.pem
 *.pub
 *.ppk
-*key*
+mykey*
 terraform.tfstate
-*.swp
-*.tar.gz

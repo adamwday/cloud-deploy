@@ -1,7 +1,7 @@
 /*
 ******************************************************************
 Passes instance device name and Jenkins version to jenkins-init.sh
-so that Jenkins can be insalled after the vm is ready.
+so that Jenkins can be installed after the vm is ready.
 ******************************************************************
 */
 data "template_file" "jenkins-init" {
@@ -20,5 +20,4 @@ data "template_cloudinit_config" "cloudinit-jenkins" {
     content_type = "text/x-shellscript"
     content      = "${data.template_file.jenkins-init.rendered}"
   }
-
 }
