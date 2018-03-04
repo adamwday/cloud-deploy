@@ -45,11 +45,7 @@ variable "private_subnet_cidr" {
 #---------------------------------------------------------------#
 # Declaring variables/defaults for the Test VPC EC2 NAT Instance.
 #---------------------------------------------------------------#
-variable "amis" {
-    description = "AMIs by region"
-    default = {
-        us-east-2 = "ami-f1810f86" # ubuntu 14.04 LTS
-    }
+variable "ami" {
 }
 variable "aws_key_path" {
 }
