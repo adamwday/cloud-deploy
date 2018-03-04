@@ -1,10 +1,8 @@
-# Resources (ubuntu-N2-aws) Repo
+# Resources (Terraform Testing) Repo
 
 ## Introduction
 
-This repository is to show examples of deploying basic web or app servers to AWS
-using Ubuntu or Windows. Also trying to play with microservices here as well like
-Consul.
+This repository is to serve as a woodshed for Terraform modules.
 
 ## Purpose
 
