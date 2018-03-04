@@ -51,3 +51,7 @@ variable "amis" {
         us-east-2 = "ami-f1810f86" # ubuntu 14.04 LTS
     }
 }
+variable "aws_key_path" {
+}
+variable "aws_key_name" {
+}
