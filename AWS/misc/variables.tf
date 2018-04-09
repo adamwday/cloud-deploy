@@ -1,45 +1,38 @@
 #-------------------------------------------------#
-# Specifying the default values for the AWS_REGION.
+# Declaring the AWS_REGION.
 #-------------------------------------------------#
 variable "AWS_REGION" {
-  default     = "us-east-2"
-  description = "Test VPC"
+  description = "AWS region where deployed"
 }
 
 #----------------------------------------------------------------------#
 # Declaring variables for the public/private paths for the RSA key pair.
 #----------------------------------------------------------------------#
 variable "PATH_TO_PRIVATE_KEY" {
-  default = "mykeyubu"
+  description = "Private key for our Ubuntu instances"
 }
 
 variable "PATH_TO_PUBLIC_KEY" {
-  default = "mykeyubu.pub"
+  description = "Public key for our Ubuntu instances"
 }
 
 #---------------------------------------------------------------#
 # Declaring variables for the AWS access key and secret key pair.
 #---------------------------------------------------------------#
-variable "AWS_ACCESS_KEY" {}
+variable "shared_creds" {
+  description = "Location of our AWS secrets"
+}
 
-variable "AWS_SECRET_KEY" {}
+#----------------------------------------#
+# Declaring variables for the AWS AMI ID.
+#----------------------------------------#
+variable "AWS_AMI" {
+  description = "AMI ID for our instance"
+}
 
-#---------------------------------------------------------#
-# Declaring variables/defaults for the Test VPC CIDR block.
-#---------------------------------------------------------#
-
-
-#------------------------------------------------------------#
-# Declaring variables/defaults for the Test VPC public subnet.
-#------------------------------------------------------------#
-
-
-#-------------------------------------------------------------#
-# Declaring variables/defaults for the Test VPC private subnet.
-#-------------------------------------------------------------#
-
-
-#---------------------------------------------------------------#
-# Declaring variables/defaults for the Test VPC EC2 NAT Instance.
-#---------------------------------------------------------------#
-
+#-----------------------------------------------#
+# Declaring variables for the AWS instance type.
+#-----------------------------------------------#
+variable "AWS_INSTANCE_TYPE" {
+  description = "Type of instance (t2.micro, etc.)"
+}
