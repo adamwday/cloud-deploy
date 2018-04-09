@@ -4,5 +4,5 @@
 #---------------------------------------------------#
 provider "aws" {
   region                  = "${var.AWS_REGION}"
-  shared_credentials_file = "${var.shared_creds}"
+  shared_credentials_file = "${var.SHARED_CREDS}"
 }

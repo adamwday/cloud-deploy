@@ -19,7 +19,7 @@ variable "PATH_TO_PUBLIC_KEY" {
 #---------------------------------------------------------------#
 # Declaring variables for the AWS access key and secret key pair.
 #---------------------------------------------------------------#
-variable "shared_creds" {
+variable "SHARED_CREDS" {
   description = "Location of our AWS secrets"
 }
 
