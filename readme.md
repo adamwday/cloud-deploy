@@ -1,12 +1,11 @@
-# IaaS Repo
+# Terraform Templates
 
-This repository is for storing various IaaS use-cases using cloud providers such as
+This repository is for storing various IaC use-cases using cloud providers such as
 Microsoft Azure, Amazon Web Services (AWS), and Google Cloud Platform (GCP).
 
 ## Purpose
 
-Develop good use-cases for IaaS solutions (mostly using Terraform) and hopefully
-integrate them later with Ansible, Chef, or Salt.
+Develop good use-cases for IaC solutions (mostly using Terraform).
 
 ## How To Contribute to this file
 
