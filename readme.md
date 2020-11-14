@@ -1,3 +1,5 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 # Terraform Templates
 
 This repository is for storing various IaC use-cases using cloud providers such as
