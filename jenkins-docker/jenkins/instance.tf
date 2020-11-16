@@ -83,7 +83,7 @@ Adds protection from accidental deletion if desired.
 ******************************************************************************
 */
 
-#  lifecycle {
-#      create_before_destroy = true
-#      prevent_destroy = false
-#  }
+ lifecycle {
+     create_before_destroy = true
+     prevent_destroy = false
+ }
